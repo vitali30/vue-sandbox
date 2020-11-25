@@ -1,9 +1,20 @@
 <template>
   <div id="app">
-    <router-link class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" to="/">Home</router-link> |
-    <router-link class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" to="/about">About</router-link>
+    <component :is="layout">
+      <router-view/>
+    </component>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    layout () {
+      return this.$route.meta.layout || 'default-layout'
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
